@@ -21,4 +21,6 @@ body {
   background: #f4f4f4;
   background: rgba(244, 244, 244, 0.79);
   border: 1px solid #d3d3d3;
+  padding: 2px 5px;
+  position: absolute;
 }
