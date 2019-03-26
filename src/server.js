@@ -1,15 +1,5 @@
 const http = require('http');
-
-const router = (req, res) => {
-    const url = req.url;
-    if (url === '/'){
-        res.writeHead(200);
-        res.end("Hello");
-    }else {
-        res.writeHead(404);
-        res.end("Not Found");
-    }
-}
+const router = require('./router');
 
 const server = http.createServer(router);
 
