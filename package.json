@@ -1,0 +1,26 @@
+{
+  "name": "EZSearch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facn5/EZSearch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/facn5/EZSearch/issues"
+  },
+  "homepage": "https://github.com/facn5/EZSearch#readme",
+  "devDependencies": {
+    "tape": "^4.10.1"
+  }
+}
