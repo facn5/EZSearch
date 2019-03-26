@@ -3,3 +3,21 @@ body {
   color: #fff;
   font: 12px/18px "HelveticaNeue", Helvetica, Arial, sans-serif;
 }
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+.search:before,
+.search:after {
+  content: "";
+  display: table;
+}
+.search:after {
+  clear: both;
+}
+.searchform {
+  background: #f4f4f4;
+  background: rgba(244, 244, 244, 0.79);
+}
