@@ -2,6 +2,8 @@ body {
   background: #3aaae8;
   color: #fff;
   font: 12px/18px "HelveticaNeue", Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
 }
 *,
 *:after,
@@ -22,10 +24,10 @@ body {
   background: rgba(244, 244, 244, 0.79);
   border: 1px solid #d3d3d3;
   padding: 2px 5px;
-  position: absolute;
-  left: 50%;
+  position: relative;
+
   border-radius: 10px;
-  top: 50%;
+
   width: 25%;
 }
 .searchform input,
