@@ -40,3 +40,12 @@ body {
   padding: 10px;
   width: 65%;
 }
+
+.searchform button {
+  background: rgb(52, 173, 236);
+  border: none;
+  color: #fff;
+  padding: 10px;
+  width: 106px;
+  box-shadow: 0 0 2px #2692dd inset;
+}
