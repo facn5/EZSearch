@@ -49,3 +49,7 @@ body {
   width: 20%;
   box-shadow: 0 0 2px #2692dd inset;
 }
+.searchform button:hover {
+  opacity: 0.9;
+  font-weight: bold;
+}
