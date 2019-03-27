@@ -1,6 +1,6 @@
 var inputField = document.getElementById("search-input");
-inputField.addEventListener("keyup", function(e) {
-  e.preventDefault();
+inputField.addEventListener("keyup", function(event) {
+  event.preventDefault();
   fetchDataFromServer(inputField.value, appendDataFromServer);
 });
 
@@ -10,7 +10,7 @@ function fetchDataFromServer(userQuery, callback) {
   var url = "/search" + "?q=" + userQuery;
   var encoded = encodeURI(url);
   xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4) {
+    if (xhr.readyState === 4 && xhr.status === 200) {
       var response = JSON.parse(xhr.responseText);
       callback(response);
     }
@@ -28,7 +28,7 @@ function appendDataFromServer(response) {
     searchResults.appendChild(newDiv);
   } else {
     response.forEach(function(items) {
-      var googleURL = "https://www.google.co.il/search?q=" + items;
+      var googleURL = "https://www.google.co.il/search?q=" + items + " FC";
       var anchorText = document.createElement("a");
       anchorText.classList.add("line");
       anchorText.text = items;
@@ -38,22 +38,6 @@ function appendDataFromServer(response) {
   }
 }
 
-var x = document.getElementById("search-input");
-x.addEventListener("focus", focusFunction, true);
-x.addEventListener("focusout", focusout, true);
-function focusFunction() {
-  document
-    .getElementById("search-results")
-    .setAttribute("style", "font-weight: bold");
-}
-
-// function focusout() {
-//   var links = document.getElementsByClassName("line");
-//   console.log(links);
-//   for (var i = 0; i < links.length; i++) {
-//     links[i].text = "";
-//   }
-// }
 function removeChildren(obj) {
   while (obj.hasChildNodes()) {
     obj.removeChild(obj.firstChild);
