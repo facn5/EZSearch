@@ -30,7 +30,7 @@ function appendDataFromServer(response) {
     response.forEach(function(items) {
       var googleURL = "https://www.google.co.il/search?q=" + items;
       var anchorText = document.createElement("a");
-      anchorText.classList.add('line');
+      anchorText.classList.add("line");
       anchorText.text = items;
       anchorText.href = googleURL;
       searchResults.appendChild(anchorText);
@@ -42,4 +42,19 @@ function removeChildren(obj) {
   while (obj.hasChildNodes()) {
     obj.removeChild(obj.firstChild);
   }
+}
+var x = document.getElementById("search-input");
+x.addEventListener("focus", myFocusFunction, true);
+x.addEventListener("focusout", focusout, true);
+function myFocusFunction() {
+  document
+    .getElementById("search-results")
+    .setAttribute("style", "font-weight: bold");
+}
+
+function focusout() {
+  document
+    .getElementById("search-results")
+    .setAttribute("style", "font-weight: bold");
+  document.getElementById("search-results").textContent == "";
 }

@@ -6,6 +6,7 @@ body {
 a {
   color: #fff;
   display: block;
+  text-decoration: none;
 }
 
 .line {
@@ -37,17 +38,4 @@ input {
   border-color: #000;
   border-radius: 10px;
   opacity: 0.5;
-}
-*,
-*:after,
-*:before {
-  box-sizing: border-box;
-}
-.search:before,
-.search:after {
-  content: "";
-  display: table;
-}
-.search:after {
-  clear: both;
 }
