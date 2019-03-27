@@ -38,11 +38,6 @@ function appendDataFromServer(response) {
   }
 }
 
-function removeChildren(obj) {
-  while (obj.hasChildNodes()) {
-    obj.removeChild(obj.firstChild);
-  }
-}
 var x = document.getElementById("search-input");
 x.addEventListener("focus", focusFunction, true);
 x.addEventListener("focusout", focusout, true);
@@ -59,3 +54,8 @@ function focusFunction() {
 //     links[i].text = "";
 //   }
 // }
+function removeChildren(obj) {
+  while (obj.hasChildNodes()) {
+    obj.removeChild(obj.firstChild);
+  }
+}
