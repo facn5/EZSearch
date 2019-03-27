@@ -1,7 +1,7 @@
 let apiKey = "QCbAV0VnE0UWZdureq8keOFGr1xBi0qy";
 let imagesearch = document.getElementById("search-input");
 var imagevalue = document.getElementById("search-input").value;
-var logo = `<img id="logo" src='https://pbs.twimg.com/media/B8_lWNOIUAAqZdC.png'>`;
+var logo = `<img id="logo" alt="football" src='https://pbs.twimg.com/media/B8_lWNOIUAAqZdC.png'>`;
 document.getElementById("image").innerHTML = logo;
 
 imagesearch.addEventListener("keyup", function(event) {
@@ -51,7 +51,7 @@ function fetchDataFromServer(userQuery, callback) {
 function appendDataFromServer(response) {
   var searchResults = document.getElementById("search-results");
   removeChildren(searchResults);
-  if (response.length === 0 && inputField.value !== "") {
+  if (response.length === 0 && searchResults.value !== "") {
     var newDiv = document.createElement("div");
     newDiv.textContent = "Sorry, no results found.";
     searchResults.appendChild(newDiv);
