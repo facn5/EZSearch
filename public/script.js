@@ -1,11 +1,32 @@
-var inputField = document.getElementById("search-input");
-inputField.addEventListener("keyup", function(e) {
-  e.preventDefault();
-  fetchDataFromServer(inputField.value, appendDataFromServer);
-  if (event.keyCode === 13 && inputField.value.length > 2) {
-    document
-      .getElementById("search-results")
-      .setAttribute("style", "display:none");
+let apiKey = "QCbAV0VnE0UWZdureq8keOFGr1xBi0qy";
+let imagesearch = document.getElementById("search-input");
+var imagevalue = document.getElementById("search-input").value;
+
+function setup() {
+  fetch(giphyAPI)
+    .then(response => {
+      return response.json();
+    })
+    .then(json => {
+      console.log(giphyAPI);
+      console.log(json);
+      console.log(json.data[0].images.original.url);
+    })
+
+    .catch(err => console.log(err));
+}
+
+imagesearch.addEventListener("keyup", function(event) {
+  event.preventDefault();
+  fetchDataFromServer(imagesearch.value, appendDataFromServer);
+  if (event.keyCode === 13) {
+    var imagevalue = document.getElementById("search-input").value;
+    let giphyAPI =
+      "https://api.giphy.com/v1/gifs/search?q=" +
+      imagevalue +
+      "&api_key=" +
+      apiKey;
+    console.log(giphyAPI);
   }
 });
 
@@ -15,7 +36,7 @@ function fetchDataFromServer(userQuery, callback) {
   var url = "/search" + "?q=" + userQuery;
   var encoded = encodeURI(url);
   xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4) {
+    if (xhr.readyState === 4 && xhr.status === 200) {
       var response = JSON.parse(xhr.responseText);
       callback(response);
     }
@@ -33,7 +54,7 @@ function appendDataFromServer(response) {
     searchResults.appendChild(newDiv);
   } else {
     response.forEach(function(items) {
-      var googleURL = "https://www.google.co.il/search?q=" + items;
+      var googleURL = "https://www.google.co.il/search?q=" + items + " FC";
       var anchorText = document.createElement("a");
       anchorText.classList.add("line");
       anchorText.text = items;
@@ -43,18 +64,6 @@ function appendDataFromServer(response) {
   }
 }
 
-var x = document.getElementById("search-input");
-x.addEventListener("focus", focusFunction, true);
-// x.addEventListener("focusout", focusout, true);
-function focusFunction() {
-  document
-    .getElementById("search-results")
-    .setAttribute("style", "font-weight: bold");
-}
-
-// function focusout() {
-
-// }
 function removeChildren(obj) {
   while (obj.hasChildNodes()) {
     obj.removeChild(obj.firstChild);
