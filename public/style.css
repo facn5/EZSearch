@@ -38,11 +38,11 @@ input {
   border-color: #000;
   border-radius: 10px;
 }
-a:onhover {
+/* a:onhover {
   margin: 15px 25px;
   outline: none;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 400;
-}
+} */

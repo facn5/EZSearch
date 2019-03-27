@@ -3,11 +3,11 @@ var wordSearch = require("./search");
 var path = require("path");
 
 var extensionType = {
-    html: "text/html",
-    css: "text/css",
-    js: "application/javascript",
-    json: "application/json"
-  };
+  html: "text/html",
+  css: "text/css",
+  js: "application/javascript",
+  json: "application/json"
+};
 
 function indexHandler(res) {
   var filePath = path.join(__dirname, "..", "public", "index.html");

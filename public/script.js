@@ -2,6 +2,11 @@ var inputField = document.getElementById("search-input");
 inputField.addEventListener("keyup", function(e) {
   e.preventDefault();
   fetchDataFromServer(inputField.value, appendDataFromServer);
+  if (event.keyCode === 13 && inputField.value.length > 2) {
+    document
+      .getElementById("search-results")
+      .setAttribute("style", "display:none");
+  }
 });
 
 function fetchDataFromServer(userQuery, callback) {
@@ -40,7 +45,7 @@ function appendDataFromServer(response) {
 
 var x = document.getElementById("search-input");
 x.addEventListener("focus", focusFunction, true);
-x.addEventListener("focusout", focusout, true);
+// x.addEventListener("focusout", focusout, true);
 function focusFunction() {
   document
     .getElementById("search-results")
@@ -48,11 +53,7 @@ function focusFunction() {
 }
 
 // function focusout() {
-//   var links = document.getElementsByClassName("line");
-//   console.log(links);
-//   for (var i = 0; i < links.length; i++) {
-//     links[i].text = "";
-//   }
+
 // }
 function removeChildren(obj) {
   while (obj.hasChildNodes()) {
