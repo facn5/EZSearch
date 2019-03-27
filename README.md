@@ -1,6 +1,6 @@
 # EZSearch
 
-## Website Link: http://wwww.google.com/
+## Website Link: http://ezsearch.herokuapp.com/
 
 
 ### About EZSearch
