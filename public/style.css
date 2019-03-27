@@ -1,6 +1,6 @@
 body {
   color: black;
-  background-color: aqua;
+  background-color: #3aaae8;
 }
 
 a {
@@ -8,7 +8,7 @@ a {
   display: block;
 }
 
-.line{
+.line {
   border-bottom: 1px solid black;
 }
 
@@ -16,7 +16,7 @@ h1 {
   font-size: 70px;
 }
 
-header{
+header {
   text-align: center;
 }
 
@@ -36,4 +36,18 @@ input {
   border: solid 3px;
   border-color: #000;
   border-radius: 10px;
+  opacity: 0.5;
+}
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+.search:before,
+.search:after {
+  content: "";
+  display: table;
+}
+.search:after {
+  clear: both;
 }
