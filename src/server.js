@@ -1,6 +1,9 @@
-const http = require('http');
-const router = require('./router');
+var http = require("http");
+var router = require('./router');
 
-const server = http.createServer(router);
+var server = http.createServer(router);
+var port = process.env.PORT || 3030;
 
-server.listen(3000);
+server.listen(port, function() {
+  console.log("Listening to port: "+port);
+});
