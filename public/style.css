@@ -7,10 +7,7 @@ a {
   color: black;
   display: block;
   text-decoration: none;
-}
-
-.line {
-  border-bottom: 1px solid black;
+  font-size: 24px;
 }
 
 h1 {
@@ -29,14 +26,24 @@ input {
   color: black;
 }
 
+.search-result {
+  display: none;
+}
+
 #search-results {
   width: 70%;
-  height: 190px;
+  height: 290px;
   margin: 0 auto;
-  border: solid 3px;
-  border-color: #000;
   border-radius: 10px;
+  background-color: white;
+  opacity: 0.5;
 }
+
+a:hover {
+  background-color: aqua;
+  opacity: 0.5;
+}
+
 #logo {
   width: 70%;
   border-radius: 10px;
@@ -44,11 +51,3 @@ input {
 #mainlabel {
   font-size: 32px;
 }
-/* a:onhover {
-  margin: 15px 25px;
-  outline: none;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 400;
-} */

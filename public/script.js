@@ -1,14 +1,16 @@
 let apiKey = "QCbAV0VnE0UWZdureq8keOFGr1xBi0qy";
 let imagesearch = document.getElementById("search-input");
-var imagevalue = document.getElementById("search-input").value;
-var logo = `<img id="logo" alt="football" src='https://pbs.twimg.com/media/B8_lWNOIUAAqZdC.png'>`;
+let searchResult = document.getElementById("search-results");
+var imagevalue = imagesearch.value;
+var logo = `<img id="logo" alt="" src=''>`;
 document.getElementById("image").innerHTML = logo;
 
 imagesearch.addEventListener("keyup", function(event) {
+  searchResult.classList.toggle('search-result');
   event.preventDefault();
   fetchDataFromServer(imagesearch.value, appendDataFromServer);
   if (event.keyCode === 13) {
-    var imagevalue = document.getElementById("search-input").value;
+      var imagevalue = document.getElementById("search-input").value;
     let giphyAPI =
       "https://api.giphy.com/v1/gifs/search?q=" +
       imagevalue +
@@ -16,7 +18,6 @@ imagesearch.addEventListener("keyup", function(event) {
       "&api_key=" +
       apiKey;
     setup(giphyAPI);
-    console.log(giphyAPI);
   }
 });
 function setup(giphyAPI) {
@@ -25,9 +26,6 @@ function setup(giphyAPI) {
       return response.json();
     })
     .then(json => {
-      console.log(giphyAPI);
-      console.log(json);
-
       document.getElementById("logo").src = json.data[0].images.original.url;
     })
 
