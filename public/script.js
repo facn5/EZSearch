@@ -44,17 +44,18 @@ function removeChildren(obj) {
   }
 }
 var x = document.getElementById("search-input");
-x.addEventListener("focus", myFocusFunction, true);
+x.addEventListener("focus", focusFunction, true);
 x.addEventListener("focusout", focusout, true);
-function myFocusFunction() {
+function focusFunction() {
   document
     .getElementById("search-results")
     .setAttribute("style", "font-weight: bold");
 }
 
-function focusout() {
-  document
-    .getElementById("search-results")
-    .setAttribute("style", "font-weight: bold");
-  document.getElementById("search-results").textContent == "";
-}
+// function focusout() {
+//   var links = document.getElementsByClassName("line");
+//   console.log(links);
+//   for (var i = 0; i < links.length; i++) {
+//     links[i].text = "";
+//   }
+// }
