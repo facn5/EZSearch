@@ -41,6 +41,9 @@ input {
   width: 70%;
   border-radius: 10px;
 }
+#mainlabel {
+  font-size: 32px;
+}
 /* a:onhover {
   margin: 15px 25px;
   outline: none;
