@@ -17,10 +17,9 @@ h1 {
   font-size: 70px;
 }
 
-header {
+section {
   text-align: center;
 }
-
 input {
   width: 70%;
   border: 2px solid;
@@ -36,6 +35,10 @@ input {
   margin: 0 auto;
   border: solid 3px;
   border-color: #000;
+  border-radius: 10px;
+}
+#logo {
+  width: 70%;
   border-radius: 10px;
 }
 /* a:onhover {

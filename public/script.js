@@ -1,20 +1,8 @@
 let apiKey = "QCbAV0VnE0UWZdureq8keOFGr1xBi0qy";
 let imagesearch = document.getElementById("search-input");
 var imagevalue = document.getElementById("search-input").value;
-
-function setup() {
-  fetch(giphyAPI)
-    .then(response => {
-      return response.json();
-    })
-    .then(json => {
-      console.log(giphyAPI);
-      console.log(json);
-      console.log(json.data[0].images.original.url);
-    })
-
-    .catch(err => console.log(err));
-}
+var logo = `<img id="logo" src='https://pbs.twimg.com/media/B8_lWNOIUAAqZdC.png'>`;
+document.getElementById("image").innerHTML = logo;
 
 imagesearch.addEventListener("keyup", function(event) {
   event.preventDefault();
@@ -24,12 +12,27 @@ imagesearch.addEventListener("keyup", function(event) {
     let giphyAPI =
       "https://api.giphy.com/v1/gifs/search?q=" +
       imagevalue +
+      " fc" +
       "&api_key=" +
       apiKey;
+    setup(giphyAPI);
     console.log(giphyAPI);
   }
 });
+function setup(giphyAPI) {
+  fetch(giphyAPI)
+    .then(response => {
+      return response.json();
+    })
+    .then(json => {
+      console.log(giphyAPI);
+      console.log(json);
 
+      document.getElementById("logo").src = json.data[0].images.original.url;
+    })
+
+    .catch(err => console.log(err));
+}
 function fetchDataFromServer(userQuery, callback) {
   var xhr = new XMLHttpRequest();
   userQuery = userQuery.toLowerCase();
