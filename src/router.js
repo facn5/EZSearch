@@ -1,23 +1,14 @@
-const handler = require('./handler');
-const path = require('path');
-const fs = require('fs');
+var handlers = require("./handler.js");
 
-const router = (req, res) => {
-    const url = req.url;
-    if (url === '/'){
-        handler.homeHandler(res);
-    }else if (url.indexOf('public') !== -1){
-        handler.publicHandler(res, url);
-    }
-    else {
-        handler.errHandler(res);
-    }
+function router(req, res) {
+  var url = req.url;
+  if (url === "/") {
+    handlers.index(res);
+  } else if (url.indexOf("/search?q=") === 0) {
+    handlers.search(url, res);
+  } else {
+    handlers.assets(url, res);
+  }
 }
 
 module.exports = router;
-
-/*
-if (url === '/'){
-        handler.homeHandler(res);
-    }else
- */
