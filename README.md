@@ -2,7 +2,6 @@
 
 ## Website Link: http://ezsearch.herokuapp.com/
 
-
 ### About EZSearch
 
 ##### EZSearch is a website that allowes users to search football team clubs.
@@ -14,9 +13,7 @@
 * it also offers a fully responsive website for mobile and desktp
 
 ## Project software architecture
-*
-*
-*
-*
+<img src="./assets/architecture.png">
 
 ## Testing Coverage
+<img src="./assets/coverage.png">
