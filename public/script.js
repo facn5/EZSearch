@@ -1,42 +1,29 @@
-let apiKey = "QCbAV0VnE0UWZdureq8keOFGr1xBi0qy";
-let imagesearch = document.getElementById("search-input");
-let searchResult = document.getElementById("search-results");
-var imagevalue = imagesearch.value;
-var logo = `<img id="logo" alt="" src=''>`;
-document.getElementById("image").innerHTML = logo;
+var apiKey = "QCbAV0VnE0UWZdureq8keOFGr1xBi0qy";
+var inputField = document.getElementById("search-input");
+var searchResult = document.getElementById("search-results");
+var image = document.getElementById('image');
 
-imagesearch.addEventListener("keyup", function(event) {
-  searchResult.classList.toggle('search-result');
+inputField.addEventListener("keyup", function (event) {
   event.preventDefault();
-  fetchDataFromServer(imagesearch.value, appendDataFromServer);
+  fetchData(inputField.value, appendData);
+  searchResult.classList.remove('display-none');
+  image.src = '';
+  image.setAttribute("alt", "");
+  if (inputField.value === '') {
+    searchResult.classList.add('display-none');
+  }
   if (event.keyCode === 13) {
-      var imagevalue = document.getElementById("search-input").value;
-    let giphyAPI =
-      "https://api.giphy.com/v1/gifs/search?q=" +
-      imagevalue +
-      " fc" +
-      "&api_key=" +
-      apiKey;
-    setup(giphyAPI);
+    searchResult.classList.add('display-none');
+    image.classList.toggle('display-none');
   }
 });
-function setup(giphyAPI) {
-  fetch(giphyAPI)
-    .then(response => {
-      return response.json();
-    })
-    .then(json => {
-      document.getElementById("logo").src = json.data[0].images.original.url;
-    })
 
-    .catch(err => console.log(err));
-}
-function fetchDataFromServer(userQuery, callback) {
+function fetchData(userQuery, callback) {
   var xhr = new XMLHttpRequest();
   userQuery = userQuery.toLowerCase();
   var url = "/search" + "?q=" + userQuery;
   var encoded = encodeURI(url);
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       var response = JSON.parse(xhr.responseText);
       callback(response);
@@ -46,7 +33,9 @@ function fetchDataFromServer(userQuery, callback) {
   xhr.send();
 }
 
-function appendDataFromServer(response) {
+function appendData(response) {
+  var res = response;
+  getGiphy(res);
   var searchResults = document.getElementById("search-results");
   removeChildren(searchResults);
   if (response.length === 0 && searchResults.value !== "") {
@@ -54,14 +43,32 @@ function appendDataFromServer(response) {
     newDiv.textContent = "Sorry, no results found.";
     searchResults.appendChild(newDiv);
   } else {
-    response.forEach(function(items) {
-      var googleURL = "https://www.google.co.il/search?q=" + items + " FC";
+    response.forEach(function (item) {
+      var googleURL = "https://www.google.co.il/search?q=" + item + " FC";
       var anchorText = document.createElement("a");
-      anchorText.classList.add("line");
-      anchorText.text = items;
+      anchorText.text = item;
       anchorText.href = googleURL;
       searchResults.appendChild(anchorText);
     });
+  }
+}
+
+function getGiphy(str) {
+  if (str !== undefined) {
+    var value = str[0];
+  }
+  if (value !== undefined) {
+    var url = "https://api.giphy.com/v1/gifs/search?q=" + value + " fc" + "&api_key=" + apiKey;
+  url = encodeURI(url);
+  fetch(url)
+    .then(res => {
+      return res.json();
+    }).then(json => {
+      var name = json.data[0].slug;
+      image.src = json.data[0].images.original.url;
+      image.setAttribute("alt", `${name}`);
+    })
+    .catch(err => console.log(err));
   }
 }
 

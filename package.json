@@ -7,8 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "tape ./test/test.js",
-    "start": "node ./src/server.js"
+    "test": "nyc tape ./test/test.js | tap-spec",
+    "start": "node ./src/server.js",
+    "coverage": "nyc --reporter=lcov npm run test"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,8 @@
   },
   "homepage": "https://github.com/facn5/EZSearch#readme",
   "devDependencies": {
+    "nyc": "^13.3.0",
+    "tap-spec": "^5.0.0",
     "tape": "^4.10.1"
   }
 }

@@ -5,13 +5,12 @@ function wordSearch(str) {
   if (str === "") {
     return (output = []);
   }
-  for (var i = 0; i < data.length && output.length < 10; i++) {
+  for (var i = 0; i < data.length && output.length < 6; i++) {
     var word = data[i].toLowerCase();
     if (word.includes(str)) {
       output.push(word);
     }
   }
-  console.log(output);
   return output;
 }
 
