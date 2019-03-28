@@ -1,4 +1,4 @@
-var data = require("../data.json").clubs;
+var data = require("../json/data.json").clubs;
 
 function wordSearch(str) {
   var output = [];
