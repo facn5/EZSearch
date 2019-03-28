@@ -5,16 +5,18 @@ var image = document.getElementById('image');
 
 inputField.addEventListener("keyup", function (event) {
   event.preventDefault();
-  fetchData(inputField.value, appendData);
-  searchResult.classList.remove('display-none');
-  image.src = '';
-  image.setAttribute("alt", "");
-  if (inputField.value === '') {
-    searchResult.classList.add('display-none');
-  }
-  if (event.keyCode === 13) {
-    searchResult.classList.add('display-none');
-    image.classList.toggle('display-none');
+  if (inputField.value !== ' ') {
+    fetchData(inputField.value, appendData);
+    searchResult.classList.remove('display-none');
+    image.src = '';
+    image.setAttribute("alt", "");
+    if (inputField.value === '') {
+      searchResult.classList.add('display-none');
+    }
+    if (event.keyCode === 13) {
+      searchResult.classList.add('display-none');
+      image.classList.toggle('display-none');
+    }
   }
 });
 
@@ -59,16 +61,16 @@ function getGiphy(str) {
   }
   if (value !== undefined) {
     var url = "https://api.giphy.com/v1/gifs/search?q=" + value + " fc" + "&api_key=" + apiKey;
-  url = encodeURI(url);
-  fetch(url)
-    .then(res => {
-      return res.json();
-    }).then(json => {
-      var name = json.data[0].slug;
-      image.src = json.data[0].images.original.url;
-      image.setAttribute("alt", `${name}`);
-    })
-    .catch(err => console.log(err));
+    url = encodeURI(url);
+    fetch(url)
+      .then(res => {
+        return res.json();
+      }).then(json => {
+        var name = json.data[0].slug;
+        image.src = json.data[0].images.original.url;
+        image.setAttribute("alt", `${name}`);
+      })
+      .catch(err => console.log(err));
   }
 }
 
